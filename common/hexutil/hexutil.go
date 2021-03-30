@@ -62,6 +62,7 @@ func Decode(input string) ([]byte, error) {
 		return nil, ErrEmptyString
 	}
 	if !has0xPrefix(input) {
+		fmt.Println("======>ErrMissingPrefix in Decode for string %s\n", input)
 		return nil, ErrMissingPrefix
 	}
 	b, err := hex.DecodeString(input[2:])
@@ -194,6 +195,7 @@ func checkNumber(input string) (raw string, err error) {
 		return "", ErrEmptyString
 	}
 	if !has0xPrefix(input) {
+		fmt.Println("======>ErrMissingPrefix in checkNumber for string %s\n", input)
 		return "", ErrMissingPrefix
 	}
 	input = input[2:]

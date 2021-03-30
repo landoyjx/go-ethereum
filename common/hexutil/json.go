@@ -339,6 +339,7 @@ func checkText(input []byte, wantPrefix bool) ([]byte, error) {
 	if bytesHave0xPrefix(input) {
 		input = input[2:]
 	} else if wantPrefix {
+		fmt.Println("======>ErrMissingPrefix in checkText for byte array %s\n", string(input))
 		return nil, ErrMissingPrefix
 	}
 	if len(input)%2 != 0 {
@@ -352,6 +353,7 @@ func checkNumberText(input []byte) (raw []byte, err error) {
 		return nil, nil // empty strings are allowed
 	}
 	if !bytesHave0xPrefix(input) {
+		fmt.Println("======>ErrMissingPrefix in checkNumberText for byte array %s\n", string(input))
 		return nil, ErrMissingPrefix
 	}
 	input = input[2:]
